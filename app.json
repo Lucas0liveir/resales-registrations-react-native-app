@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "resale-registration",
+    "slug": "resale-registration",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
