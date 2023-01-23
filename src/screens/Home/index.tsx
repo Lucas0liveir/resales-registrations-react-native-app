@@ -1,5 +1,3 @@
-import React from "react";
-import { CommonActions } from '@react-navigation/native';
 import { HighlightCard } from "../../components/highlightCard";
 import { Ionicons } from "@expo/vector-icons"
 import HandshaketransactionSvg from '../../assets/handshake-transaction.svg';
@@ -19,13 +17,13 @@ import {
     Wrapper,
     SearchContainer,
     ShortcutContainer,
+    ProfileWrapper
 } from './styles'
 import { Searchbar } from "react-native-paper";
 import { User } from "../../mobX/models/User";
 import { RectButton } from "react-native-gesture-handler";
 import { observer } from "mobx-react";
-import { CommandInvoker, useCommand } from "../../mobX/command";
-import { LoginCommand } from "../../mobX/command/LoginCommand";
+import { useCommand } from "../../mobX/command";
 import { LogoutCommand } from "../../mobX/command/LogoutCommand";
 
 
@@ -37,15 +35,16 @@ export const Home = observer(({ navigation }) => {
         <Container>
             <Header>
                 <HeaderContentWrapper>
-                    <PhotoWrapper>
-                        <Photo
-                            source={{ uri: "http://github.com/lucas0liveir.png" }}
-                        />
-                    </PhotoWrapper>
-                    <Title>
-                        Olá, {User.name ?? "Fulano"}
-                    </Title>
-
+                    <ProfileWrapper>
+                        <PhotoWrapper>
+                            <Photo
+                                source={{ uri: "http://github.com/lucas0liveir.png" }}
+                            />
+                        </PhotoWrapper>
+                        <Title>
+                            Olá, {User.name ?? "Fulano"}
+                        </Title>
+                    </ProfileWrapper>
                     <RectButton
                         onPress={() => {
                             logoutCommand.execute()
@@ -61,24 +60,26 @@ export const Home = observer(({ navigation }) => {
             <Content>
                 <HighlightCard
                     isProfit
+                    delay={500}
                     title="Lucro"
-                    amount="R$ 5.000,00"
+                    amount={5000}
                     period="nos últimos 30 dias"
                 />
                 <HighlightCard
                     title="A receber"
-                    amount="R$ 12.000,00"
+                    delay={700}
+                    amount={12000}
                     period="nos próximos 30 dias"
                 />
                 <HighlightCard
                     isOverdue
+                    delay={800}
                     title="Em atraso"
-                    amount="R$ 2.000,00"
+                    amount={2000}
                     period="nos últimos 15 dias"
                 />
             </Content>
             <Wrapper>
-
                 <Resales>
                     <SearchContainer >
                         <Searchbar

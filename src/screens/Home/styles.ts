@@ -1,8 +1,10 @@
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { StatusBar } from "react-native";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     flex: 1;
+    margin-top: ${StatusBar.currentHeight}px;
     background-color: ${({ theme }) => theme.colors.background};
 `
 
@@ -13,6 +15,7 @@ export const SearchContainer = styled.View`
 export const Header = styled.View`
     width: 100%;
     height: 120px;
+    padding: 0 5px;
     elevation: 1;
     align-items: center;
     background-color: ${({ theme }) => theme.colors.shape};
@@ -23,13 +26,10 @@ export const PhotoWrapper = styled.View`
     height: 50px;
     align-items: center;
     justify-content: center;
+    margin-right: 10px;
     border-radius: 25px;
     border-width: .8px;
     border-color: ${({ theme }) => theme.colors.primary};
-`
-
-export const Spacer = styled.View`
-    flex-grow: 0.7;
 `
 
 export const Content = styled.ScrollView.attrs({
@@ -89,6 +89,11 @@ export const ShortcutContainer = styled.View`
 export const Wrapper = styled.View`
     flex: 1;
     margin-top: ${RFPercentage(15)}px;
+`
+
+export const ProfileWrapper = styled.View`
+    flex-direction: row;
+    align-items: center;
 `
 
 export const TimeLineEmpty = styled.View`

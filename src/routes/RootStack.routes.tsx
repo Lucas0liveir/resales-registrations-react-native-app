@@ -10,7 +10,7 @@ const RootStackScreen = observer(() => (
     <RootStack.Navigator screenOptions={{
         headerShown: false
     }}>
-        {User.authenticationToken ? (
+        {!User.authenticationToken ? (
             <RootStack.Screen
                 name="App"
                 component={BottomRoutes}
