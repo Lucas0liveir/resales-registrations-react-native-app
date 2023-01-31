@@ -17,9 +17,11 @@ import { Searchbar } from "react-native-paper";
 import { ClientCard } from "../../components/clientCard";
 import { useTheme } from "styled-components";
 import { FormClient } from "../../components/formClient";
+import { AnimatedFlatList } from "../../components/animatedFlatList";
 
 export function Clients() {
-    const clients = ["Gabriel", "Gustavo", "Jamile", "Lucas", "Pedro", "Gabriel", "Gustavo", "Jamile", "Lucas", "Pedro"]
+    const clients = ["Gabriel", "Gustavo", "Jamile", "Lucas", "Pedro", "Gabriel", "Gustavo", "Jamile", "Lucas", "Pedro",
+    "Gabriel", "Gustavo", "Jamile", "Lucas", "Pedro", "Gabriel", "Gustavo", "Jamile", "Lucas", "Pedro"]
     const theme = useTheme()
     const navigation = useNavigation<any>()
     const bottomSheetRef = useRef<BottomSheetModal>(null);
@@ -28,7 +30,6 @@ export function Clients() {
     const handlePresentModalPress = useCallback(() => {
         bottomSheetRef.current?.present();
     }, []);
-
 
     return (
         <Container>
@@ -45,10 +46,9 @@ export function Clients() {
                     value={searchQuery}
                 />
 
-                <ListClients
+                <AnimatedFlatList
+                    ItemComponent={ClientCard}
                     data={clients}
-                    keyExtractor={(item, index) => String(index)}
-                    renderItem={({ item }) => <ClientCard clientName={item} />}
                 />
             </Content>
 

@@ -7,23 +7,34 @@ import {
 } from "./styles"
 
 interface Props {
-    clientName: string
+    item: string;
+    style: any
 }
 
-export function ClientCard({ clientName }: Props) {
-    const randomColor = useMemo(() => `#${Math.floor(Math.random() * 16777215).toString(16)}`, [])
+export function ClientCard({ item, style }: Props) {
+    const randomColor = useMemo(() => {
+        let color = Math.floor(Math.random() * 16777215).toString(16);
+        while (color === "ffffff" || color === "e0ec0") {
+            color = Math.floor(Math.random() * 16777215).toString(16);
+        }
+        console.log(color);
+        
+        return `#${color}`;
+    }, []);
 
     return (
-        <Container>
+        <Container
+            style={style}
+        >
             <Icon
                 backgroundColor={randomColor}
             >
                 <FirstLetter>
-                    {clientName[0]}
+                    {item[0]}
                 </FirstLetter>
             </Icon>
             <Name>
-                {clientName}
+                {item}
             </Name>
         </Container>
     )

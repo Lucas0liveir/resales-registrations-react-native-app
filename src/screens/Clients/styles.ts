@@ -1,11 +1,12 @@
 import { RFValue } from "react-native-responsive-fontsize";
-import { FlatList } from "react-native";
+import { FlatList, StatusBar } from "react-native";
 import { RectButton } from "react-native-gesture-handler"
 import styled from "styled-components/native";
 
 export const Container = styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.shape};
+    margin-top: ${StatusBar.currentHeight ?? 42}px;
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const Content = styled.View`

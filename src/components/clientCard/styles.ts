@@ -1,12 +1,17 @@
+import { Animated, View } from "react-native"
 import { RFValue } from "react-native-responsive-fontsize"
 import styled from "styled-components/native"
 
 interface Props {
     backgroundColor: string
 }
-export const Container = styled.View`
+const AnimatedView = Animated.createAnimatedComponent(View)
+
+export const Container = styled(AnimatedView)`
     width: 100%;
+    background-color: ${({ theme }) => theme.colors.shape};
     align-items: center;
+    border-radius: 8px;
     flex-direction: row;
     padding: 15px;
     margin: 10px 0;
@@ -34,4 +39,5 @@ export const FirstLetter = styled.Text`
     font-size: ${RFValue(15)}px;
     text-transform: uppercase;
     font-family: ${({ theme }) => theme.fonts.regular};
+    color: ${({ theme }) => theme.colors.shape};
 `
